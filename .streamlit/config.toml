@@ -1,0 +1,37 @@
+# Streamlit configuration for NeuroScan.
+#
+# This is committed on purpose. Without it the app inherits whichever theme the
+# visitor's Streamlit defaults to, and app.py's stylesheet is written against a
+# light background — under a dark default the built-in widget text and the file
+# uploader render nearly invisible. Pinning the theme keeps the deployed app
+# looking the way it was designed regardless of who opens it.
+#
+# The colours below mirror the CSS custom properties in app.py, so the Streamlit
+# chrome and the custom cards agree with each other. Comments are kept on their
+# own lines: a "#" opening a hex colour is legal inside a TOML string, but it
+# reads ambiguously next to a trailing comment.
+
+[theme]
+base = "light"
+
+# --accent
+primaryColor = "#0E7C86"
+
+# --page
+backgroundColor = "#F5F7FA"
+
+# --card
+secondaryBackgroundColor = "#FFFFFF"
+
+# --ink
+textColor = "#0F1E2E"
+
+font = "sans serif"
+
+[server]
+# MRI slices in this dataset are well under 1 MB. The 200 MB default only
+# invites accidental huge uploads on a memory-capped instance.
+maxUploadSize = 10
+
+[browser]
+gatherUsageStats = false

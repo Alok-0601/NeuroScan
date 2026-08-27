@@ -1,0 +1,28 @@
+# No Git LFS in this repository, deliberately.
+#
+# The model was previously tracked with LFS, which broke deployment: Streamlit
+# Community Cloud clones without resolving LFS objects, so the app received a
+# 134-byte pointer file where it expected a 147 MiB model. slim_model.py strips
+# the unused Adam optimiser state from the .keras archive (147 -> 68 MiB), which
+# brings it under GitHub's 100 MB per-file limit and lets it be committed as an
+# ordinary binary. Do not re-add an LFS filter for *.keras.
+
+# Normalise line endings in the repository to LF, while still checking out
+# native endings on Windows. Without this, files committed from Windows differ
+# from the same files committed from Linux and show up as spuriously modified.
+* text=auto
+
+# Binary: never translate line endings, never attempt a textual diff.
+*.keras binary
+*.h5    binary
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+
+# Notebooks are JSON with embedded output cells. Textual diffs of them are
+# unreadable and enormous, so suppress them; the file is still versioned.
+*.ipynb -diff
+
+# Keep GitHub's language statistics meaningful — without this the repo is
+# reported as mostly Jupyter Notebook rather than Python.
+*.ipynb linguist-documentation

@@ -1,0 +1,19 @@
+# Dependencies for the NeuroScan Streamlit app.
+#
+# Streamlit Community Cloud reads this file from the repository root and
+# installs everything in it before running app.py. Without this file no
+# packages are installed, which is why `import tensorflow` failed.
+
+streamlit>=1.32
+
+# tensorflow-cpu, not tensorflow. The full package pulls in ~2 GB of CUDA
+# libraries that a hosted CPU instance can never use, and that download alone
+# is enough to blow past the build's resource limits.
+tensorflow-cpu>=2.16
+
+# The .keras archive was written by Keras 3.13.2, so anything older may refuse
+# to deserialise it. Newer versions read it fine.
+keras>=3.13.2
+
+numpy>=1.26
+pillow>=10.0

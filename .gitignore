@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# Dataset images
+# ---------------------------------------------------------------------------
+# ~175 MB and 7,200 files. These redistribute a public dataset, so they are
+# kept out of the history. See the Dataset section of README.md for the source.
+Training/
+Testing/
+
+# The four demo scans in samples/ ARE committed, so the app works from a
+# fresh clone. This negation keeps them tracked even if a broader image
+# rule is ever added below.
+!samples/
+!samples/**
+
+# ---------------------------------------------------------------------------
+# Training artefacts
+# ---------------------------------------------------------------------------
+# Intermediate ModelCheckpoint files written while Brain.ipynb runs. The final
+# model lives in Models/ and is tracked as a normal file.
+best_cnn_model.keras
+best_vgg16_model.keras
+best_vgg16_finetuned.keras
+checkpoints/
+logs/
+runs/
+
+# Backups left by slim_model.py — the 147 MiB pre-slimming copies of the model,
+# kept locally so a swap can be rolled back, never committed.
+*.keras.bak
+*.slim.keras
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# ---------------------------------------------------------------------------
+# Jupyter
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# ---------------------------------------------------------------------------
+# Streamlit
+# ---------------------------------------------------------------------------
+# Never commit secrets. Local theme/config overrides stay local too.
+.streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Environment and credentials
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+kaggle.json
+
+# ---------------------------------------------------------------------------
+# Editors and IDEs
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# Operating system
+# ---------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
